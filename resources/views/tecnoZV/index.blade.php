@@ -7,40 +7,18 @@
 
         <div class="pisos-lista">
             
-            <div class="piso">
-                <img src="https://via.placeholder.com/300x200" alt="Piso 1">
-                <h3>Piso Centro Moderno</h3>
-                <p class="precio">155.000 €</p>
-                <a href="{{ route('pisos.show', $piso['id']) }}" class="boton">Ver detalles</a>
-            </div>
+          @foreach ($pisos as $piso)
+                <div class="piso">
+                    <img src="{{ asset($piso['imagen']) }}" alt="{{ $piso['nombre'] }}">
+                    <h3>{{ $piso['nombre'] }}</h3>
+                    <p class="precio">{{ number_format($piso['precio'], 0, ',', '.') }} €</p>
 
-            <div class="piso">
-                <img src="https://via.placeholder.com/300x200" alt="Piso 2">
-                <h3>Ático con Terraza</h3>
-                <p class="precio">210.000 €</p>
-                <a href="{{ route('pisos.show', $piso['id']) }}" class="boton">Ver detalles</a>
-            </div>
+                    <a href="{{ route('tecnoZV.show', $piso['id']) }}" class="boton">
+                        Ver detalles
+                    </a>
+                </div>
+            @endforeach
 
-            <div class="piso">
-                <img src="https://via.placeholder.com/300x200" alt="Piso 3">
-                <h3>Piso Económico Delicias</h3>
-                <p class="precio">99.000 €</p>
-                <a href="{{ route('pisos.show', $piso['id']) }}" class="boton">Ver detalles</a>
-            </div>
-
-            <div class="piso">
-                <img src="https://via.placeholder.com/300x200" alt="Piso 4">
-                <h3>Vivienda Reformada</h3>
-                <p class="precio">185.000 €</p>
-                <a href="{{ route('pisos.show', $piso['id']) }}" class="boton">Ver detalles</a>
-            </div>
-
-            <div class="piso">
-                <img src="https://via.placeholder.com/300x200" alt="Piso 5">
-                <h3>Estudio Ideal Inversión</h3>
-                <p class="precio">75.000 €</p>
-                <a href="{{ route('pisos.show', $piso['id']) }}" class="boton">Ver detalles</a>
-            </div>
 
         </div>
     </div>

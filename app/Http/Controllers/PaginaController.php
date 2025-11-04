@@ -55,16 +55,20 @@ class PaginaController extends Controller{
 ];
 
 
-    public function index():View{
-        return view("tecnoZV.index");
+    public function index(){
+    $pisos = $this->pisos;
+    return view('tecnoZV.index', ['pisos'=> $pisos]);
     }
 
     public function show($id){
-    dd($id);
-    $piso = collect($this->pisos)->firstWhere('id', $id);
+        $piso = collect($this->pisos)->firstWhere('id', $id);
 
-    return view('tecnoZV.show', ['piso' => $piso]);
-}
+        if (!$piso) {
+            abort(404);
+        }
+
+        return view('tecnoZV.show', compact('piso'));
+    }
 
 
     public function atencion():View{
