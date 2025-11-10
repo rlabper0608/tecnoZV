@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+
 <div class="container">
     <div class="detalle-piso">
 
@@ -19,4 +20,5 @@
 
     </div>
 </div>
+
 @endsection

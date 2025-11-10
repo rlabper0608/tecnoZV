@@ -55,19 +55,23 @@ class PaginaController extends Controller{
 ];
 
 
-    public function index(){
+    public function index():View {
+        // Esto cambia, ya que no esta en un base de datos, por tanto le tenemos que pasar todos los elementos que tengo con $this->pisos
     $pisos = $this->pisos;
     return view('tecnoZV.index', ['pisos'=> $pisos]);
     }
 
-    public function show($id){
+    public function show($id):View{
+        // En piso guardamos, la información que tenemos en el array de pisos, y le decimos que recupere la primera línea, la cual es el id
         $piso = collect($this->pisos)->firstWhere('id', $id);
 
+        //Si el piso no existe sacamos un error 404 not found
+        
         if (!$piso) {
             abort(404);
         }
 
-        return view('tecnoZV.show', compact('piso'));
+        return view('tecnoZV.show', ["piso"=>$piso]);
     }
 
 
